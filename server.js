@@ -6,6 +6,17 @@ var statut = require("./myModules/statut");
 const express = require('express')
 const app = express()
 
+
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
+
+
 app.get('/listmovies',  function (req, res) {
   movie.getAllMovies(req,res);
 })
@@ -71,4 +82,4 @@ app.post('/statut/update',function(req,res){
 
 
 
-app.listen(3000)
+app.listen(3500)
